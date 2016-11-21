@@ -1,0 +1,41 @@
+{
+
+  "description": "Clear all cookies except for defined domains",
+  "manifest_version": 2,
+  "name": "Cookie Sweep",
+  "version": "0.1",
+
+  "permissions": [
+      "storage",
+      "cookies",
+      "<all_urls>"
+],
+
+  "background": {
+    "scripts": ["sweep.js"]
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "64": "icons/icon-64.png"
+    }
+  },
+
+  "icons": {
+    "32": "icons/icon-32.png",
+    "64": "icons/icon-64.png"
+  },
+
+  "options_ui": {
+    "page": "options/options.html"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "cookie-sweep@mozilla.org",
+      "strict_min_version": "45.0"
+    }
+  }
+}
