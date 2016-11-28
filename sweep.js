@@ -15,7 +15,7 @@ function clearCookies(cookies) {
         for (var d of domainsArray) {
             d = d.trim();
 
-            if (cookie.domain.lastIndexOf(d) !== -1) {
+            if (cookie.domain.endsWith('.' + d)) {
                 // keep cookie
                 console.log("KEEP " + cookie.domain + " --- " + cookie.name);
                 deleteCookie = false;
