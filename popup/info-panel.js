@@ -1,10 +1,6 @@
 var domains = null;
-
-function buttonClicked() {
-    var getting = browser.cookies.getAll({});
-
-    getting.then(clearCookies);
-}
+var kept = 0;
+var removed = 0;
 
 function clearCookies(cookies) {
 
@@ -19,6 +15,7 @@ function clearCookies(cookies) {
                 // keep cookie
                 console.log("KEEP " + cookie.domain + " --- " + cookie.name);
                 deleteCookie = false;
+                kept++;
             }
         }
 
@@ -35,16 +32,26 @@ function clearCookies(cookies) {
             });
             removingHttps.then(onCookieRemoved, onCookieError);
             console.log("REMOVE " + cookie.domain + " --- " + cookie.name);
+            removed++;
         }
     }
-}
 
-function onStorageError(error) {
-  console.log(`Error: ${error}`);
+    console.log("count.kept: " + kept);
+    console.log("count.removed: " + removed);
+
+    document.getElementById("k").innerHTML = kept;
+    document.getElementById("r").innerHTML = removed;
 }
 
 function onStorageGot(item) {
     domains = item.domains;
+
+    var getting = browser.cookies.getAll({});
+    getting.then(clearCookies);
+}
+
+function onStorageError(error) {
+  console.log(`Error: ${error}`);
 }
 
 function onCookieRemoved(cookie) {
@@ -66,5 +73,4 @@ function storageChanged() {
 var getting = browser.storage.local.get("domains");
 getting.then(onStorageGot, onStorageError);
 
-browser.browserAction.onClicked.addListener(buttonClicked);
 browser.storage.onChanged.addListener(storageChanged);
