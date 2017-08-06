@@ -39,8 +39,16 @@ function clearCookies(cookies) {
     console.log("count.kept: " + kept);
     console.log("count.removed: " + removed);
 
-    document.getElementById("k").innerHTML = kept;
-    document.getElementById("r").innerHTML = removed;
+    var para1 = document.createElement("p");
+    var node1 = document.createTextNode(parseInt(kept) + " Cookies kept.");
+    para1.appendChild(node1);
+
+    var para2 = document.createElement("p");
+    var node2 = document.createTextNode(parseInt(removed) + " Cookies removed.");
+    para2.appendChild(node2);
+
+    document.getElementById("output").appendChild(para1);
+    document.getElementById("output").appendChild(para2);
 }
 
 function onStorageGot(item) {
