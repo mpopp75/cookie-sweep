@@ -4,34 +4,33 @@ var removed = 0;
 
 function clearCookies(cookies) {
 
-    var domainsArray = domains.split(",");
+    var domainsArray = domains.split(",").map(d => d.trim());
 
     for (var cookie of cookies) {
         var deleteCookie = true;
         for (var d of domainsArray) {
-            d = d.trim();
-
             if (cookie.domain === d || cookie.domain.endsWith('.' + d)) {
                 // keep cookie
-                console.log("KEEP " + cookie.domain + " --- " + cookie.name);
+                console.log("KEEPING " + cookie.domain + cookie.path + " --- " + cookie.name);
                 deleteCookie = false;
                 kept++;
+                break;
             }
         }
 
-        if (deleteCookie === true) {
+        if (deleteCookie) {
             var removingHttp = browser.cookies.remove({
-                url: "http://" + cookie.domain,
+                url: "http://" + cookie.domain + cookie.path,
                 name: cookie.name
             });
             removingHttp.then(onCookieRemoved, onCookieError);
 
             var removingHttps = browser.cookies.remove({
-                url: "https://" + cookie.domain,
+                url: "https://" + cookie.domain + cookie.path,
                 name: cookie.name
             });
             removingHttps.then(onCookieRemoved, onCookieError);
-            console.log("REMOVE " + cookie.domain + " --- " + cookie.name);
+            console.log("REMOVING " + cookie.domain + cookie.path + " --- " + cookie.name);
             removed++;
         }
     }
@@ -64,7 +63,7 @@ function onStorageError(error) {
 
 function onCookieRemoved(cookie) {
     try {
-        console.log("REMOVED " + cookie.name);
+        console.log("REMOVED " + cookie.domain + cookie.path + " --- " + cookie.name);
     } catch (e) {}
     return;
 }
@@ -74,11 +73,14 @@ function onCookieError(error) {
 }
 
 function storageChanged() {
+    runMain();
+}
+
+function runMain() {
     var getting = browser.storage.local.get("domains");
     getting.then(onStorageGot, onStorageError);
 }
 
-var getting = browser.storage.local.get("domains");
-getting.then(onStorageGot, onStorageError);
+runMain();
 
 browser.storage.onChanged.addListener(storageChanged);
