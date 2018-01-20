@@ -1,4 +1,35 @@
+:root {
+  --font-stack: "Segoe UI", "San Francisco", "Ubuntu", "Fira Sans", "Roboto",
+    sans-serif;
+  --grey20: #ededf0;
+  --grey30: #d7d7db;
+  --grey40: #b1b1b3;
+}
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
+}
+
+div.button,
+button {
+  border-radius: 2px;
+  padding: 8px;
+  border: solid 1px var(--grey30);
+  background-color: transparent;
+  font-weight: 400;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+div.button:hover,
+button:hover {
+  background-color: var(--grey30);
+}
+
+div.button:active,
+button:active {
+  background-color: var(--grey40);
 }

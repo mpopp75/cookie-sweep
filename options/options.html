@@ -2,15 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script type="application/javascript" src="../background.js"></script>
     <link rel="stylesheet" href="options.css">
   </head>
 
   <body>
 
     <form>
-        <label>Keep cookies of Domains (separate by comma, e.g. "google.com, amazon.com, facebook.com"):<br>
-        <input type="text" id="domains" style="width: 80%"></label>
-        <button type="submit">Save</button>
+      <label>Keep cookies of Domains (separate by comma, e.g. "google.com, amazon.com, facebook.com"):<br>
+      <input type="text" id="domains" style="width: 80%"></label>
+      <button type="submit">Save</button>
+      <div style="display: flex; justify-content: flex-start; align-items: center;">
+        <div id="runNow" class="button">Clear Cookies Now!</div>
+        <div style="margin-left: 8px;" id="runNowResult"></div>
+<!--
+        <div style="margin-left: 8px;" id="runSettingsExport" class="button">Export Settings</div>
+        <div style="margin-left: 8px;" id="runDebugInfo" class="button">Show Debug Information</div>
+-->
+      </div>
     </form>
 
     <script src="options.js"></script>
