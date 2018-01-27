@@ -5,7 +5,7 @@ function saveOptions(e) {
   if(saveTimer) { clearTimeout(saveTimer); }
   saveTimer = setTimeout(saveOptionsSync, 1000);
 };
-/* Save options syncchronously (immediately). */
+/* Save options synchronously (immediately). */
 function saveOptionsSync() {
   browser.storage.local.set({
     domains: document.querySelector("#domains").value
@@ -36,6 +36,7 @@ function runMain() {
   var nodeP = document.createTextNode("Processing...");
   paraP.appendChild(nodeP);
   progress.appendChild(paraP);
+  progress.style.display = "block";
 
   clearCookies()
   .then(stats => {
@@ -58,7 +59,6 @@ function runMain() {
 }
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
-// document.querySelector("#save").addEventListener("click", saveOptions);
 document.querySelector("#domains").addEventListener("input", saveOptions); // Autosave
 window.addEventListener("blur", saveOptionsSync); // Autosave on window deactivate
 document.querySelector("#runNow").addEventListener("click", runMain);

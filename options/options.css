@@ -1,13 +1,13 @@
 :root {
-  --font-stack: "Segoe UI", "San Francisco", "Ubuntu", "Fira Sans", "Roboto",
-    sans-serif;
-  --grey20: #ededf0;
+  --font-stack: Helvetica, Arial, sans-serif;
   --grey30: #d7d7db;
   --grey40: #b1b1b3;
+  --action-result: #f1f3d9;
+  --run-now-button: #fe8080;
 }
 
 body {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: var(--font-stack);
     font-size: 14px;
 }
 
@@ -51,7 +51,6 @@ button {
   background-color: transparent;
   font-weight: 400;
   -moz-user-select: none;
-  -webkit-user-select: none;
   user-select: none;
   cursor: default;
 }
@@ -71,18 +70,26 @@ button:active {
   margin-left: 8px;
 }
 
-.action-result {
+#actionResult {
+  display: none;
   border-radius: 4px;
   padding: 8px 16px;
   color: black;
-  background-color: rgb(241, 243, 217);
+  background-color: var(--action-result);
+}
+
+div.run-now-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 #runNow {
-  background-color: #fe8080;
+
+  background-color: var(--run-now-button);
 }
+
 #runNow:hover {
   background-color: var(--grey30);
 }
-
 

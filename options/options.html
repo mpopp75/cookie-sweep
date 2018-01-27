@@ -2,39 +2,31 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script type="application/javascript" src="../background.js"></script>
+    <script src="../background.js"></script>
     <link rel="stylesheet" href="options.css">
   </head>
-
   <body>
-
     <form id="options">
-      <label class="column">
-        <h3>Preserved Domains</h3>
-        <label>Keep cookies of Domains (separate by comma, e.g. "google.com, amazon.com, facebook.com"):</label>
-        <textarea required type="textarea" id="domains" rows=5 placeholder="." spellcheck="false"></textarea>
-<!--
-        <div style="display: flex; justify-content: flex-end; align-items: center;">
-          <div id="save" class="button">Save</div>
-        </div>
--->
-      </label>
-<!--      <hr> -->
-      <label class="column">
-        <h3>Actions</h3>
-        <div style="display: flex; justify-content: flex-start; align-items: center;">
+      <h3>Preserved Domains</h3>
+      <div class="column">
+        <label for="domains">Keep cookies of Domains (separate by comma, e.g. "google.com, amazon.com, facebook.com"):</label>
+        <textarea required id="domains" rows="5" placeholder="." spellcheck="false"></textarea>
+      </div>
+      <p>Settings are saved automatically.</p>
+
+      <hr>
+
+      <h3>Actions</h3>
+      <div class="column">
+        <p>If you prefer to clear Cookies only occasionally, you may want to use this button rather than cluttering your toolbar.
+        Use "Customize" from the Firefox menu to remove the "Cookie Sweep" icon, if you choose so.</p>
+        <div class="run-now-container">
           <div id="runNow" class="button">Clear Cookies Now!</div>
-<!--
-          <div id="runSettingsExport" class="button button2">Export Settings</div>
-          <div id="runDebugInfo" class="button button2">Show Debug Information</div>
--->
         </div>
-        <div id="actionResult" class="action-result"></div>
-      </label>
+        <div id="actionResult"></div>
+      </div>
     </form>
 
     <script src="options.js"></script>
-
   </body>
-
 </html>
