@@ -3,7 +3,7 @@
   "description": "Clear all cookies except for defined domains",
   "manifest_version": 2,
   "name": "Cookie Sweep",
-  "version": "1.1.0",
+  "version": "1.1.1",
 
   "permissions": [
       "storage",
@@ -38,7 +38,7 @@
   "applications": {
     "gecko": {
       "id": "cookie-sweep@mozilla.org",
-      "strict_min_version": "52.0"
+      "strict_min_version": "60.0"
     }
   }
 }
