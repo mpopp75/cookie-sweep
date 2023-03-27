@@ -1,40 +1,55 @@
 {
-  "description": "Clear all cookies except for defined domains",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Cookie Sweep",
+  "description": "Clear all cookies except for defined domains",
   "version": "1.1.4",
-
-  "permissions": [
-      "storage",
-      "cookies",
-      "<all_urls>"
-  ],
-
-  "background": {
-    "scripts": ["background.js"]
+  "developer": {
+    "name": "Markus Popp",
+    "url": "https://github.com/mpopp75/cookie-sweep"
   },
-
-  "browser_action": {
+  "permissions": [
+    "storage",
+    "cookies"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "action": {
     "default_icon": {
       "16": "icons/icon-16.png",
       "32": "icons/icon-32.png",
       "64": "icons/icon-64.png"
     },
     "default_title": "Sweep Cookies",
-    "default_popup": "popup/info-panel.html"
+    "default_popup": "popup/info-panel.html",
+    "theme_icons": [
+      {
+        "light": "icons/icon-16.png",
+        "dark": "icons/icon-16-dark.png",
+        "size": 16
+      },
+      {
+        "light": "icons/icon-32.png",
+        "dark": "icons/icon-32-dark.png",
+        "size": 32
+      },
+      {
+        "light": "icons/icon-64.png",
+        "dark": "icons/icon-64-dark.png",
+        "size": 64
+      }
+    ]
   },
-
-  "icons": {
-    "32": "icons/icon-32.png",
-    "64": "icons/icon-64.png"
-  },
-
   "options_ui": {
     "page": "options/options.html",
     "browser_style": true
   },
-
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "cookie-sweep@mozilla.org",
       "strict_min_version": "102.0"
