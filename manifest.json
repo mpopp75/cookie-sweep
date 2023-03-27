@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Cookie Sweep",
   "description": "Clear all cookies except for defined domains",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "developer": {
     "name": "Markus Popp",
     "url": "https://github.com/mpopp75/cookie-sweep"
@@ -52,7 +52,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "cookie-sweep@mozilla.org",
-      "strict_min_version": "102.0"
+      "strict_min_version": "111.0"
     }
   }
 }
